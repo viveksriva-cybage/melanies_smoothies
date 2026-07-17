@@ -1,4 +1,4 @@
-# Import python packages
+import requests  
 import streamlit as st
 import os
 from snowflake.snowpark.functions import col
@@ -38,3 +38,6 @@ values ('""" + ingredients_string + """','""" +name_on_order+"""')"""
         session.sql(my_insert_stmt).collect()
         
         st.success('Your Smoothie is ordered!', icon="✅")
+
+smoothiefroot_response = requests.get("[https://my.smoothiefroot.com/api/fruit/watermelon](https://my.smoothiefroot.com/api/fruit/watermelon)")  
+st.text(smoothiefroot_response)
